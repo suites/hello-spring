@@ -4,7 +4,6 @@ import hello.hellospring.domain.Member
 import java.util.*
 import kotlin.collections.HashMap
 
-
 class MemoryMemberRepository: MemberRepository {
     private val store = HashMap<Long, Member>()
     private var sequence = 0L
