@@ -1,18 +1,17 @@
 package hello.hellospring
 
-import JdbcMemberRepository
-import hello.hellospring.repository.JdbcTemplateMemberRepository
+import hello.hellospring.repository.JpaMemberRepository
 import hello.hellospring.repository.MemberRepository
 import hello.hellospring.service.MemberService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import javax.sql.DataSource
+import javax.persistence.EntityManager
 
 @Configuration
-class SpringConfig(private val dataSource: DataSource) {
+class SpringConfig(private val entityManager: EntityManager) {
     @Bean
     fun memberRepository(): MemberRepository {
-        return JdbcTemplateMemberRepository(dataSource)
+        return JpaMemberRepository(entityManager)
     }
 
     @Bean
