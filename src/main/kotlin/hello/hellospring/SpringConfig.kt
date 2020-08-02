@@ -1,6 +1,7 @@
 package hello.hellospring
 
 import JdbcMemberRepository
+import hello.hellospring.repository.JdbcTemplateMemberRepository
 import hello.hellospring.repository.MemberRepository
 import hello.hellospring.service.MemberService
 import org.springframework.context.annotation.Bean
@@ -11,7 +12,7 @@ import javax.sql.DataSource
 class SpringConfig(private val dataSource: DataSource) {
     @Bean
     fun memberRepository(): MemberRepository {
-        return JdbcMemberRepository(dataSource)
+        return JdbcTemplateMemberRepository(dataSource)
     }
 
     @Bean
