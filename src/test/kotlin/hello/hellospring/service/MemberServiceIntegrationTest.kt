@@ -16,7 +16,6 @@ class MemberServiceIntegrationTest(
         @Autowired private val memberService: MemberService,
         @Autowired private val memberRepository: MemberRepository
 ) {
-
     @Test
     fun 회원가입() {
         // given
@@ -42,5 +41,19 @@ class MemberServiceIntegrationTest(
 
         // then
         assertThat(e.message).isEqualTo("이미 존재하는 회원입니다.")
+    }
+
+    @Test
+    fun 회원목록() {
+        // given
+        val member1 = Member(name = "hello1")
+        val member2 = Member(name = "hello2")
+        memberService.join(member1)
+        memberService.join(member2)
+        // when
+        val members = memberService.findMembers()
+
+        // then
+        assertThat(members.size).isEqualTo(2)
     }
 }

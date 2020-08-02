@@ -6,5 +6,6 @@ import javax.persistence.*
 class Member(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
+    @Column(name = "name")
     var name: String
 )
